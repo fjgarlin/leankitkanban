@@ -10,11 +10,11 @@
 
 class LeanKitKanban {
 
-  private $account = ''; // Your Account
-  private $host = ''; // Your Account Url
-  private $api_url = ''; // Your API Url
-  private $username = ''; // User's username (email) for LeanKit Kanban login
-  private $password = ''; // User's password for LeanKit Kanban login
+  protected $account = ''; // Your Account
+  protected $host = ''; // Your Account Url
+  protected $api_url = ''; // Your API Url
+  protected $username = ''; // User's username (email) for LeanKit Kanban login
+  protected $password = ''; // User's password for LeanKit Kanban login
 
   private $request_method = ''; // verbs : GET, POST, PUT, DELETE
   private $request_url = ''; // The request url to LeanKit Kanban API
