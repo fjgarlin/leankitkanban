@@ -257,7 +257,7 @@ class LeanKitKanban {
     $request_data = $this->arrayToJSON(array(
       'searchOptions' => array(
         'SearchInBoard' => TRUE,
-        'Page' => isset($filters['page']) ?: 1,
+        'Page' => isset($filters['page']) ? $filters['page'] : 1,
         //TODO: other filters
       )
     ));
