@@ -243,6 +243,29 @@ class LeanKitKanban {
     return $this->getResponseData();
   }
 
+  /**
+   * Search all the cards within a board.
+   *
+   * @param $board_id
+   * @param array $filters
+   *
+   * @return array
+   */
+  public function searchCards($board_id, $filters = array()) {
+    $this->setRequestMethod('POST');
+    $this->setRequestURL($this->api_url."Board/{$board_id}/Searchcards");
+    $request_data = $this->arrayToJSON(array(
+      'searchOptions' => array(
+        'SearchInBoard' => TRUE,
+        'Page' => isset($filters['page']) ?: 1,
+        //TODO: other filters
+      )
+    ));
+    $this->setRequestData($request_data);
+    $this->post();
+    return $this->getResponseData();
+  }
+
  /**
   * This method simply retrieves the detail for a single card when you request it by card Id.
   *
