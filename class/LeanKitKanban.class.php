@@ -332,6 +332,29 @@ class LeanKitKanban {
   }
 
   /**
+   * This method takes the card JSON in the request body and updates the card (using the cardId in the card JSON) with
+  the provided values. The cardId is not added to the url...just in the card JSON in the body.
+   * This only updates the given fields.
+   *
+   * HTTP: POST
+   * @param array, int
+   * @return JSON
+   *
+   * @example http://myaccount.leankitkanban.com/kanban/api/card/update
+  @example http://myaccount.leankitkanban.com/kanban/api/card/update
+   *
+   * @see https://support.leankit.com/hc/en-us/articles/207303038-LeanKit-API-Update-a-Card-Only-Specific-Fields-
+   */
+  public function updateCardSimple($array_card) {
+    $this->setRequestMethod('POST');
+    $this->setRequestURL($this->api_url."card/update");
+    $request_data = $this->arrayToJSON($array_card);
+    $this->setRequestData($request_data);
+    $this->put();
+    return $this->getResponseData();
+  }
+
+  /**
    * This method deletes a single card. The cardId is specified in the url.
    * 
    * HTTP: POST
